@@ -1,4 +1,4 @@
-import { Controller, Get, Bind, Dependencies, Post, Put, Delete, Param, Res, Body } from '@nestjs/common';
+import { Controller, Get, Bind, Dependencies, Post, Put, Delete, Param, Res, Body, Req } from '@nestjs/common';
 import { EmployeesService } from './employees.service';
 
 @Controller('employees')
@@ -10,29 +10,40 @@ export class EmployeesController {
     @Post()
     @Bind(Res(), Body())
     create(res, body) {
-        let employeeData = {
+        console.log(body);
+        let employeeData;
+        if(body.addrLineTwo){
+            employeeData = {
+                name: body.name,
+                emailAddr: body.emailAddr,
+                phNumber: body.phNumber,
+                city: body.city,
+                zipCode: body.zipCode,
+                addrLineOne: body.addrLineOne,
+                addrLineTwo: body.addrLineTwo,
+                dateOfEmpl: body.dateOfEmpl,
+                dateOfBirth: body.dateOfBirth,
+            }
+        }
+        else {
+        employeeData = {
             name: body.name,
             emailAddr: body.emailAddr,
             phNumber: body.phNumber,
             city: body.city,
             zipCode: body.zipCode,
             addrLineOne: body.addrLineOne,
+            addrLineTwo: "-",
             dateOfEmpl: body.dateOfEmpl,
             dateOfBirth: body.dateOfBirth,
         }
+    }
         for (let data in employeeData) {
             if (!employeeData[data]) {
                 res.status(400).send(`Missing ${data} in request`);
                 return;
             }
         }
-        if (body.addrLineTwo) {
-            employeeData[addrLineTwo] = body.addrLineTwo;
-        }
-        else {
-            employeeData[addrLineTwo] = "-";
-        }
-
         res.status(200).send(this.employeesService.create(employeeData));
     }
 
@@ -54,8 +65,11 @@ export class EmployeesController {
 
     @Put()
     @Bind(Res(), Body())
-    update(body) {
+    update(res, body) {
         if (body.id && body.updateData) {
+            console.log(body);
+            let updateData = JSON.parse(body.updateData);
+            console.log(updateData);
             let changedData = {
                 name: undefined,
                 emailAddr: undefined,
@@ -67,9 +81,9 @@ export class EmployeesController {
                 dateOfEmpl: undefined,
                 dateOfBirth: undefined,
             };
-            for (let data in body.updateData) {
-                if (body.updateData[data] !== "Unchanged" && data in changedData) {
-                    changedData[data] = body.updateData;
+            for (let data in updateData) {
+                if ( data in changedData) {
+                    changedData[data] = updateData[data];
                 }
             }
             res.status(200).send(this.employeesService.update(body.id, changedData));
