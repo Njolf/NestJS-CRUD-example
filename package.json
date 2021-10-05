@@ -15,11 +15,16 @@
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
+    "babel": "^6.23.0",
+    "babel-register": "^6.26.0",
+    "Dbabel-loader": "file:babel/core@babel/preset-envwebpack",
+    "dotenv": "^10.0.0",
     "mongoose": "^6.0.8",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0"
   },
   "devDependencies": {
+    "@babel/compat-data": "7.9.0",
     "@babel/core": "^7.8.7",
     "@babel/node": "^7.8.7",
     "@babel/plugin-proposal-decorators": "^7.8.3",
