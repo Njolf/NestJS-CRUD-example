@@ -5,7 +5,7 @@ import { EmployeesService } from './employees.service';
 @Dependencies(EmployeesService)
 export class EmployeesController {
     constructor(employeesService) {
-        this.employeesService = EmployeesService;
+        this.employeesService = employeesService;
     }
     @Post()
     @Bind(Res(), Body())
