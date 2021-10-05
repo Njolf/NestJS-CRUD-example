@@ -23,6 +23,7 @@ export class EmployeesController {
         for (let data in employeeData) {
             if (!employeeData[data]) {
                 res.status(400).send(`Missing ${data} in request`);
+                return;
             }
         }
         if (body.addrLineTwo) {
