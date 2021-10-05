@@ -4,18 +4,19 @@
   You can create a new employee by sending a POST request to /employees, with all of the necessary data in the  
   request's body:
 
-  Name,
-  Email Address,
-  Phone Number,
-  City,
-  Zip Code, 
-  Address Line 1,
-  Address Line 2 (optional),
-  Date of Employment,
-  Date of Birth
+  Name,  
+  Email Address,  
+  Phone Number,  
+  City,  
+  Zip Code,   
+  Address Line 1,  
+  Address Line 2 (optional),  
+  Date of Employment,  
+  Date of Birth  
 
   <h3><i>example request:</i></h3>
   <b>POST /employees</b>
+  
   ``` json
   "body": {
     "name": "John Doe",
@@ -34,18 +35,18 @@
   You can fetch a list of employees by sending a GET request to /employees.
   <h3><i>example request:</i></h3>
   <b>GET /employees</b>
-  ```
+  
   https://examplesite.com/employees
-  ```
+  
 
 <h2>Getting a single employee:</h2>
   You can fetch a single employee by sending a GET request to /employees with their ID as a parameter.
   <h3><i>example request:</i></h3>
   <b>GET /employees?id=123<b>
 
-  ```
+  
   https://examplesite.com/employees?id=123
-  ```
+  
 
 <h2>Updating an employee's information:</h2>
   You can update an employee's information by sending a PUT request to /employees with their ID, as well as  
