@@ -16,7 +16,7 @@
 
   <h3><i>example request:</i></h3>
   <b>POST /employees</b>
-  
+
   ``` json
   "body": {
     "name": "John Doe",
@@ -42,7 +42,7 @@
 <h2>Getting a single employee:</h2>
   You can fetch a single employee by sending a GET request to /employees with their ID as a parameter.
   <h3><i>example request:</i></h3>
-  <b>GET /employees?id=123<b>
+  <b>GET /employees?id=123</b>
 
   
   https://examplesite.com/employees?id=123
